@@ -12,8 +12,8 @@ import java.util.List;
 
 @Service
 public class UserServiceImpl implements IUserDemoService {
-//    @Autowired
-//    private UserDemoDAO dao;
+    @Autowired
+    private UserDemoDAO dao;
 
     @Override
     public String getType() {
