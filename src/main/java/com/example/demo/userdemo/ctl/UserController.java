@@ -34,7 +34,8 @@ public class UserController {
     @RequestMapping(value = "/list", method = RequestMethod.GET)
     public ModelAndView listUsers1(NCCommonSVO param) {
         ModelAndView mav = new ModelAndView("/views/list");
-        List<NCCommonSVO> userList = userService.selList(param);
+        List<NCCommonSVO> userList =userService.selList(param);
+
         mav.addObject("list", userList);
 
         return mav;

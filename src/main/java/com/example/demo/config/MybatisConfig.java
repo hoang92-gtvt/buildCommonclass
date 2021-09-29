@@ -3,6 +3,7 @@ package com.example.demo.config;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -37,12 +38,14 @@ public class MybatisConfig {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource());
 
-//        PathMatchingResourcePatternResolver pathMyBatisConfig = new PathMatchingResourcePatternResolver();
-//        sqlSessionFactoryBean.setConfigLocation(pathMyBatisConfig .getResource("classpath:/WEB-INF/conf/mybatis-config.xml"));
-//
+        PathMatchingResourcePatternResolver pathMyBatisConfig = new PathMatchingResourcePatternResolver();
+        sqlSessionFactoryBean.setConfigLocation(pathMyBatisConfig .getResource("classpath:/config/mybatis-config.xml"));
+
+
+        sqlSessionFactoryBean.setVfs(SpringBootVFS.class);
 
         PathMatchingResourcePatternResolver pathM3R = new PathMatchingResourcePatternResolver();
-        sqlSessionFactoryBean.setMapperLocations(pathM3R.getResources("classpath*:mapper/*.xml"));
+        sqlSessionFactoryBean.setMapperLocations(pathM3R.getResources("classpath*:mybatis/*.xml"));
         System.out.println("tao duoc sql session");
         return sqlSessionFactoryBean;
     }
