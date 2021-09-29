@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class UserController {
@@ -35,8 +36,11 @@ public class UserController {
     public ModelAndView listUsers1(NCCommonSVO param) {
         ModelAndView mav = new ModelAndView("/views/list");
         List<NCCommonSVO> userList =userService.selList(param);
-
+//        List<UsersDemo> list = userList.stream().map(
+//                element->(UsersDemo)element
+//                ).collect(Collectors.toList());
         mav.addObject("list", userList);
+
 
         return mav;
     }
