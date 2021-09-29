@@ -15,8 +15,9 @@ import java.util.List;
 
 @Controller
 public class UserController {
-//    @Autowired
-//    private IUserDemoService userService;
+    @Autowired
+    @Qualifier("userService")
+    private IUserDemoService userService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public ModelAndView index() {
@@ -30,12 +31,12 @@ public class UserController {
         return mav;
     }
 
-//    @RequestMapping(value = "/list", method = RequestMethod.GET)
-//    public ModelAndView listUsers1(NCCommonSVO param) {
-//        ModelAndView mav = new ModelAndView("/views/list");
-//        List<NCCommonSVO> userList = userService.selList(param);
-//        mav.addObject("list", userList);
-//
-//        return mav;
-//    }
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public ModelAndView listUsers1(NCCommonSVO param) {
+        ModelAndView mav = new ModelAndView("/views/list");
+        List<NCCommonSVO> userList = userService.selList(param);
+        mav.addObject("list", userList);
+
+        return mav;
+    }
 }

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 
-@Service
+@Service("userService")
 public class UserServiceImpl implements IUserDemoService {
     @Autowired
     private UserDemoDAO dao;
@@ -22,8 +22,8 @@ public class UserServiceImpl implements IUserDemoService {
 
     @Override
     public List<NCCommonSVO> selList(NCCommonSVO param) {
-        return null;
-//        return dao.findAll();
+
+        return dao.selectList(param);
     }
 
     @Override
